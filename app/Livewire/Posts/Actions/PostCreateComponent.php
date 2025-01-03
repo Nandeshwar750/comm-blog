@@ -36,7 +36,10 @@ class PostCreateComponent extends Component
         $this->validate();
 
         // Sanitize the HTML content
-        $sanitizedContent = Purifier::clean($this->content);
+        $sanitizedContent = Purifier::clean($this->content, [
+            'HTML.Allowed' => 'h1,h2,p,b,i,a[href],ul,ol,li,img[src]', // Allow img tag with src attribute
+            'HTML.AllowedAttributes' => 'a.href,img.src', // Allow href for links and src for images
+        ]);
 
         $post = new Post();
         $post->title = $this->title;

@@ -37,6 +37,7 @@ window.setupQuill = function() {
                     this.editor.on('text-change', () => {
                         console.log('Text changed');
                         this.content = this.editor.root.innerHTML; // Update local content
+                        // Ensure that the content is properly formatted for Livewire
                         if (this.$wire) {
                             console.log('Setting content in Livewire');
                             this.$wire.set('content', this.content);
