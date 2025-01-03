@@ -64,7 +64,9 @@ $logout = function () {
                     </button>
                 </form> --}}
                 <livewire:navigation-search />
-
+                <x-nav-link :href="route('dashboard.posts')" :active="request()->routeIs('dashboard.posts')">
+                    {{ __('Manage Posts') }}
+                </x-nav-link>
                 <!-- Navigation Links -->
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('about') }}"
@@ -74,6 +76,12 @@ $logout = function () {
                     <a href="{{ route('contact') }}"
                         class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
                         {{ __('Contact') }}
+                    </a>
+                    <a href="{{ route('posts.index') }}" class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
+                        {{ __('Posts') }}
+                    </a>
+                    <a href="{{ route('posts.create') }}" class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400">
+                        {{ __('Create Post') }}
                     </a>
                 </div>
 

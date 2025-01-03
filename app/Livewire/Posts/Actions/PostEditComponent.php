@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Log;
 
 class PostEditComponent extends Component
 {
@@ -14,7 +15,7 @@ class PostEditComponent extends Component
 
     public Post $post;
     public $title;
-    public $content;
+    public $content = '';
     public $featured_image;
     public $status;
     public $newFeaturedImage;
@@ -37,6 +38,9 @@ class PostEditComponent extends Component
         $this->title = $post->title;
         $this->content = $post->content;
         $this->status = $post->status;
+
+        // Debugging log
+        Log::info('Post content:', ['content' => $this->content]);
     }
 
     public function save()

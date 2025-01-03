@@ -45,11 +45,13 @@ Route::prefix('posts')->group(function () {
         ->middleware('auth')
         ->name('posts.create');
     Route::get('/{post}/edit', PostEditComponent::class)
-        ->middleware('auth')
+        ->middleware(['auth', 'can:update,post'])
         ->name('posts.edit');
     Route::get('/{post}', PostShowComponent::class)
         ->name('posts.show');
 });
+
+Route::get('/dashboard/posts', App\Livewire\PostManagement::class)->middleware(['auth'])->name('dashboard.posts');
 
 require __DIR__ . '/auth.php';
 
